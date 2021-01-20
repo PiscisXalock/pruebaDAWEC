@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-multiplicar',
@@ -11,7 +11,7 @@ export class MultiplicarComponent implements OnInit {
   factor: number;
   tabla: number[] = [0];
 
-  constructor(private rutaActiva: ActivatedRoute) { }
+  constructor(private rutaActiva: ActivatedRoute, private irHacia:Router) { }
 
   ngOnInit(): void {
     this.factor = parseInt(this.rutaActiva.snapshot.paramMap.get("factor"))
@@ -20,6 +20,10 @@ export class MultiplicarComponent implements OnInit {
         this.tabla.push(this.factor * index)
       }
     }
+  }
+
+  volverACalculadora(): void{
+    this.irHacia.navigate(['/calculadora'])
   }
 
 }
