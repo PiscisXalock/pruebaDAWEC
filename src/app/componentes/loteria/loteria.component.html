@@ -1,0 +1,12 @@
+<p>Lotería Bosco</p>
+<button (click)="numero1.obtenAleatorio();numero2.obtenAleatorio()">Generar número lotería</button>
+<app-generar-loteria #numero1></app-generar-loteria>
+<hr>
+<app-generar-loteria #numero2></app-generar-loteria>
+<hr>
+<p>El número ganador es: {{numero1.digito}}{{numero2.digito}}.</p>
+<p *ngIf="numero1.digito==numero2.digito&&numero1.digito!=null">Ambos digitos son iguales. PREMIO</p>
+<!--<ng-template #manolito><p>Sigue jugando :(</p></ng-template> ; else manolito se pone arriba despues del null en mi caso-->
+<p *ngIf="numero1.digito!=numero2.digito">Sigue jugando :(</p>
+<app-generar-loteria entrada = "1323"></app-generar-loteria>
+<app-generar-loteria [objetoEntrada] = objeto></app-generar-loteria>
