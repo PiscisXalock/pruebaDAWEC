@@ -1,0 +1,46 @@
+<h5>Estructura de control con IfElse</h5>
+<label for="verdad">
+<input type="checkbox" id="verdad" [(ngModel)] = "verdad">
+</label>
+<h5>{{verdad? "Es verdad" : "Es mentira"}} con ternario</h5>
+<hr>
+<h5 *ngIf = "verdad; else mentira">Es verdad con *ngIf</h5>
+<ng-template #mentira><h5>Es mentira con *ngIf</h5></ng-template>
+<input type="number" id="edad" [(ngModel)] = "edad">
+<hr>
+<p>If-Else con SugarCandy</p>
+<h5 *ngIf = "edad < 18; else adulto">Eres menor de 18 años. Tienes {{edad}} años.</h5>
+<ng-template #adulto>
+    <ng-container *ngIf = "edad < 30; else mayor"><h5>Eres menor de 30 años. Tienes {{edad}} años.</h5></ng-container>
+</ng-template>
+<ng-template #mayor><h5>Eres mayor de 30 años. Tienes {{edad}} años.</h5></ng-template>
+<p>If-Else con microsintaxis</p>
+<ng-template [ngIf] = "edad < 18" [ngIfElse] = "adulto2"><h5>Es menor de 18 años</h5></ng-template>
+<ng-template #adulto2>
+    <ng-template [ngIf] = "edad < 30" [ngIfElse] = "mayor2"><h5>Es menor de 30 años.</h5></ng-template>
+</ng-template>
+<ng-template #mayor2><h5>Es usted mayor de 30 años.</h5></ng-template>
+<br>
+<p>Estructura For avanzado</p>
+<ul>
+    <li *ngFor = "let numero of [0, 11, 22, 33, 44, 55]; let indice = index; let impar = odd; let primero = first; let ultimo = last; let cuenta = count;" [ngClass] = "{'text-danger':impar, 'bg-primary':primero}" (click)=muestraLog(indice,impar,primero,ultimo,cuenta)>
+        En la posición {{indice}} de {{cuenta - 1}}, que es {{impar? "impar": "par"}}, esta el número {{numero}}
+        {{primero? ", que es el primer elemento del array" : ""}} {{ultimo? ", que es el último elemento del array" : ""}}
+    </li>
+</ul>
+<hr>
+<table class="table">
+    
+    <tbody>
+        <tr *ngFor = "let numero of [0, 11, 22, 33, 44, 55]; let indice = index; let impar = odd; let primero = first; let ultimo = last; let cuenta = count;" [ngClass] = "{'text-danger':impar, 'bg-primary':primero}" (click)=muestraLog(indice,impar,primero,ultimo,cuenta)>
+            <td>En la posición {{indice}} de {{cuenta - 1}}, que es {{impar? "impar": "par"}}, esta el número {{numero}}
+                {{primero? ", que es el primer elemento del array" : ""}} {{ultimo? ", que es el último elemento del array" : ""}}</td>
+        </tr>
+        <tr>
+            <td scope="row"></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
